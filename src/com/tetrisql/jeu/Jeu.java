@@ -18,7 +18,6 @@ public class Jeu implements Forme {
 		FScore = 0;
 	}
 	
-	// Méthode pour nettoyer la grille
 	void Nettoyer() {
 		JeuZone.remplirGrille(0, 0, JeuZone.getX(), JeuZone.getY(), 0);
 	}
