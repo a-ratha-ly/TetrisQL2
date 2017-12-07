@@ -121,4 +121,26 @@ public class Grille {
 		x = y;
 		y = tmp;
 	}
+	
+	public boolean vide(Grille g, int tx, int ty) {
+		int px, py;
+		
+		px = g.x;
+		py = g.y;
+		
+		for(int i=0; i<px; i++) {
+			for(int j=0; j<py; j++) {
+				if((tx+i<x) && (ty+j<y) && (tx+i>=0) && (ty+j>=0)) {
+					if(grille[tx+i][ty+j]!=0 && g.grille[i][j]!=0) {
+						return true;
+					}
+				} else {
+					if(valeur != 0 && g.grille[i][j]!=0) {
+						return true;
+					}
+				}
+			}
+		}
+		return false;
+	}
 }
