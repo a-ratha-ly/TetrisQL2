@@ -1,13 +1,11 @@
 package com.tetrisql.jeu;
 
-import java.util.*;
-
 public class Grille {
 	//Attributs
 	public int x, y, valeur; //val = pour détecter quelle forme-pièce
 	public int grille[][];
 	
-	//Constructeur 1
+	//Constructeur 1 (pour Factory)
 	public Grille(int li, int col) {
 		//grille vide
 		this(li, col, 0); 
@@ -44,7 +42,5 @@ public class Grille {
 				grille[i][j] = g.grille[i][j];
 			}
 		}	
-	}
-
-	
+	}	
 }
