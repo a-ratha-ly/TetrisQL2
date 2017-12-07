@@ -66,7 +66,9 @@ public class Grille {
 	
 	//mouvements
 	public void descendre(Grille g, int tx, int ty) {
-		int px, py; //positions
+		//positions (change or code readability - Codacy)
+		int px;
+		int py; 
 	
 		px = g.x;
 		py = g.y;
