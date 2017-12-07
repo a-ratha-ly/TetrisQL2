@@ -6,15 +6,15 @@ public class Grille {
 	public int grille[][];
 	
 	//Constructeur 1 (pour Factory)
-	public Grille(int li, int col) {
+	public Grille(int tx, int ty) { //tailles
 		//grille vide
-		this(li, col, 0); 
+		this(tx, ty, 0); 
 	}
 	
 	//Constructeur 2
-	public Grille(int li, int col, int val) {	
-		x = li;
-		y = col;
+	public Grille(int tx, int ty, int val) {	
+		x = tx;
+		y = ty;
 		valeur = val;	
 		
 		//création grille
@@ -44,11 +44,47 @@ public class Grille {
 		}	
 	}
 	
+	//weigh, height
+	public void remplirGrille(int tx, int ty, int w, int h, int val) {
+		for (int i=0; i<w; i++) {
+			for (int j=0; j<h; j++) {
+				if((tx+i<x) && (ty+j<y) && (tx+i>=0) && (ty+j>=0)) {
+					grille[x+i][y+j] = val;
+				}
+			}
+		}
+	}
+	
+	//getters
 	public int getX() {
 		return x;
 	}
 	
 	public int getY() {
 		return y;
+	}
+	
+	//mouvements
+	public void descendre(Grille g, int tx, int ty) {
+		int px, py; //positions
+	
+		px = g.x;
+		py = g.y;
+		
+		if(px+tx>x) {
+			px = x-tx;
+		}
+		
+		if(py+ty>y) {
+			py = y-ty;
+		}
+		
+		for(int i=0; i<px; i++) {
+			for(int j=0; j<py; j++) {
+				if((tx+i<x) && (tx+j<y) && (tx+i>=0) && (ty+j>=0)) {
+					grille[tx+i][ty+j] = grille[tx+i][ty+j] | g.grille[i][j];
+				}
+			}
+		}
 	}
 }
