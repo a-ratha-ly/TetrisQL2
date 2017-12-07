@@ -6,13 +6,35 @@ import com.tetrisql.jeu.Grille;
 public class Factory {
 	
 	//Méthode random pour retourner une forme random
+	public static Grille creerRandomTetrimino() {
+		int type = (int)(Math.random()*7); //entre 0 et 6
+		return initialiserTetrimino(type);		
+	}
 	
 	//Switch utilisé par la méthode random (choisir entre différentes formes)
-	
+	public static Grille initialiserTetrimino(int type) {
+		switch(type) {
+			case 0:
+				return new TetriminoI();
+			case 1:
+				return new TetriminoO();
+			case 2:
+				return new TetriminoT();
+			case 3:
+				return new TetriminoL();
+			case 4:
+				return new TetriminoJ();
+			case 5:
+				return new TetriminoZ();
+			case 6:
+				return new TetriminoS();	
+		}
+		return null;
+	}
 	//
 }
 
-//Les différentes formes du jeu
+//Les différents types de tetrimino
 class TetriminoI extends Grille {
 	TetriminoI(){ //barre
 		super(4,1); //Grille(int x, int y)
