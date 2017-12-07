@@ -28,10 +28,11 @@ public class Factory {
 				return new TetriminoZ();
 			case 6:
 				return new TetriminoS();	
+			default: 
+				break;
 		}
-		return null;
+		return creerRandomTetrimino();
 	}
-	//
 }
 
 //Les différents types de tetrimino
