@@ -109,12 +109,38 @@ public class Jeu implements Forme {
 	{
 		if (JeuZone.vide(Piece, px+i, py))
 			return;
-		px+=i;
+		px+= i;
 	}
 
 	public void AllerDroite()
 	{
 		AllerDroite(1);
+	}
+	
+	// rotation droite
+	public void TournerDroite()
+	{
+		Grille test = Factory.nouvellePiece(Piece);
+		test.deplacerDroite();
+		if(!JeuZone.vide(test,px,py))
+			Piece=test;
+	}
+
+	// rotation gauche
+	public void TournerGauche()
+	{
+		Grille test = Factory.nouvellePiece(Piece);
+		test.deplacerGauche();
+		if(!JeuZone.vide(test, px, py))
+			Piece = test;
+	}
+
+	public void Descendre()
+	{
+		while(!JeuZone.vide(Piece, px, py+1)){
+			py++;
+			FScore += 2;
+		}
 	}
 
 }
