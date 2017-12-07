@@ -65,6 +65,7 @@ public class Jeu implements Forme {
 	  return false;
 	}
 	
+	// Si la ligne est remplie, retourne true
 	private boolean CheckLigneRemplie(int y) {
 		for(int i=0;i<JeuZone.getX();i++) 
 			if(JeuZone.grille[i][y]==0)
@@ -72,6 +73,7 @@ public class Jeu implements Forme {
 		return true;
 	}
 
+	// Efface la ligne
 	private void LigneEffacer(int y) {
 		for(int j=y; j>0; j--) {
 			for(int i=0; i < JeuZone.getX(); i++) {
@@ -83,6 +85,36 @@ public class Jeu implements Forme {
 		}
 	}
 	
-	
-	
+	// retourne le score
+	public int Score()
+	{
+		return FScore;
+	}
+
+	// deplacement gauche
+	public void AllerGauche(int i)
+	{
+		if (JeuZone.vide(Piece, px-i, py))
+			return;
+		px-=i;
+	}
+
+	public void AllerGauche()
+	{
+		AllerGauche(1);
+	}
+
+	// deplacement droite
+	public void AllerDroite(int i)
+	{
+		if (JeuZone.vide(Piece, px+i, py))
+			return;
+		px+=i;
+	}
+
+	public void AllerDroite()
+	{
+		AllerDroite(1);
+	}
+
 }
