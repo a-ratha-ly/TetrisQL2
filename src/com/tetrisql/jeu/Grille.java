@@ -89,4 +89,36 @@ public class Grille {
 			}
 		}
 	}
+	
+	public void deplacerDroite() {
+		int nouvelleGrille[][] = new int[y][x];
+		int s = y-1;
+		
+		for(int i=0; i<y; i++) {
+			for(int j=0; j<x; j++) {
+				nouvelleGrille[i][j] = grille[j][s-i];
+			}
+			grille = nouvelleGrille;	
+		}
+		
+		int tmp = x;
+		x = y;
+		y = tmp;
+	}
+	
+	public void deplacerGauche() {
+		int nouvelleGrille[][] = new int[y][x];
+		int s = x-1;
+		
+		for(int i=0; i<y; i++) {
+			for(int j=0; j<x; j++) {
+				nouvelleGrille[i][j] = grille[s-j][i];
+			}
+			grille = nouvelleGrille;	
+		}
+		
+		int tmp = x;
+		x = y;
+		y = tmp;
+	}
 }
