@@ -18,21 +18,23 @@ public class Jeu implements Forme {
 		FScore = 0;
 	}
 	
-	// Méthode pour nettoyer la grille
+	// Nettoyer la grille
 	void Nettoyer() {
 		JeuZone.remplirGrille(0, 0, JeuZone.getX(), JeuZone.getY(), 0);
 	}
 	
 	public void Dessin(Graphics g, int x, int y) {
 		g.drawRect(x, y, 2+JeuZone.getX()*12, 2 + JeuZone.getY()*12);
-		for (int j=0; j<JeuZone.getY(); j++)
-			for (int i=0; i<JeuZone.getX(); i++)
+		for (int j=0; j<JeuZone.getY(); j++) {
+			for (int i=0; i<JeuZone.getX(); i++) {
 				if ((JeuZone.grille[i][j]!=0) || 
-                           ((i>=px) && (i<px+Piece.getX()) && 
+                        ((i>=px) && (i<px+Piece.getX()) && 
 				   (j >= py) && (j < py + Piece.getY()) && 
-				   (Piece.grille[i-px][j-py] != 0)))
-				g.fillRect(3+x+i*12,3+y+j*12,10,10);
-		
+				   (Piece.grille[i-px][j-py] != 0))) {
+					g.fillRect(3+x+i*12,3+y+j*12,10,10);
+				}
+			}		
+		}	
 	}
 	
 }
