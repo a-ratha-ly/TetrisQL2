@@ -144,3 +144,37 @@ public class Jeu implements Forme {
 	}
 
 }
+
+class Memento {
+	
+	Jeu Cible;
+	Grille JeuZone;
+	Grille Piece;
+	int FScore;
+	int px, py;
+
+	public Memento(Jeu cible) {
+		Cible = cible;
+		JeuZone = new Grille(Cible.JeuZone);
+		Piece = new Grille(Cible.Piece);
+		FScore = Cible.FScore;
+		px = Cible.px;
+		py = Cible.py;
+	}
+	
+	public void CibleChanger(Jeu cible){
+		Cible = cible;
+	}
+
+	public void Chargement(){
+		try {
+			Cible.JeuZone = JeuZone;
+			Cible.Piece = Piece;
+			Cible.FScore = FScore;
+			Cible.px = px;
+			Cible.py = py;
+		} catch (NullPointerException e) {
+			System.out.println("Non restaure");
+		}
+	}
+}
