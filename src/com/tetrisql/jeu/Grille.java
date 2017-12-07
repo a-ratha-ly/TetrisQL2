@@ -42,5 +42,13 @@ public class Grille {
 				grille[i][j] = g.grille[i][j];
 			}
 		}	
-	}	
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
 }
