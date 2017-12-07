@@ -38,7 +38,7 @@ public class Jeu implements Forme {
 	}
 	
 	public boolean Etape(boolean Toucher) {
-	  if (JeuZone.SiVide(Piece, px, py+1)) {
+	  if (JeuZone.vide(Piece, px, py+1)) {
 		// Descendre la piece
 		JeuZone.descendre(Piece,px,py);
 
@@ -56,7 +56,7 @@ public class Jeu implements Forme {
 		Piece = Factory.creerRandomTetrimino();
 		py = 0;
 		px = (JeuZone.getX() - Piece.getX()) / 2;
-		if (JeuZone.SiVide(Piece, px, py))
+		if (JeuZone.vide(Piece, px, py))
 		return true;
 	  }
 	  py++;
