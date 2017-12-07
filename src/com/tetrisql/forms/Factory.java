@@ -33,6 +33,10 @@ public class Factory {
 		}
 		return creerRandomTetrimino();
 	}
+	
+	public static Grille nouvellePiece(Grille ancien) {
+		return new Grille(ancien);
+	}
 }
 
 //Les différents types de tetrimino
