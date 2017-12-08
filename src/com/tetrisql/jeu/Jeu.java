@@ -16,7 +16,7 @@ public class Jeu implements Forme{
 	{
 		JeuZone = new Grille(xs,ys,1); //zone jeu et dimensions
 		Nettoyer();
-		Piece = Factory.NouvellePiece(); //Pièce random
+		Piece = Factory.nouvellePiece(); //Pièce random
 		py = 0;
 		px = (xs - Piece.TailleX()) / 2;
 		FScore=0;
@@ -64,7 +64,7 @@ public class Jeu implements Forme{
 		}
 	
 		//Nouvelle piece
-		Piece = Factory.NouvellePiece();
+		Piece = Factory.nouvellePiece();
 		py=0;
 		px=(JeuZone.TailleX()-Piece.TailleX())/2;
 		if(JeuZone.SiVide(Piece,px,py))
@@ -133,7 +133,7 @@ public class Jeu implements Forme{
 
 	public void TournerDroite()
 	{
-		Grille test = Factory.NouvellePiece(Piece);
+		Grille test = Factory.nouvellePiece(Piece);
 		test.TourneraDroite();
 		if(!JeuZone.SiVide(test,px,py))
 			Piece=test;
@@ -141,7 +141,7 @@ public class Jeu implements Forme{
 
 	public void TournerGauche()
 	{
-		Grille test = Factory.NouvellePiece(Piece);
+		Grille test = Factory.nouvellePiece(Piece);
 		test.TourneraGauche();
 		if(!JeuZone.SiVide(test,px,py))
 			Piece=test;

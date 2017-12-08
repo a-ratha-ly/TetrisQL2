@@ -53,20 +53,20 @@ public class Tetris extends java.applet.Applet implements Runnable{
 		Etat = new Decorator(new Zone(95,16),"Etat: ");
 		Enregistrement = null;
 
-		xs=x*12+16;  // Zone de jeu
-		ys=y*12+4   // Zone de jeu
+		xs = x*12+16;  // Zone de jeu
+		ys = y*12+4   // Zone de jeu
 		       +60;	// Score et Etat
 		resize(xs,ys);
 		requestFocus();
 
-		/** Affectation des taches pour les touches a utiliser */
+		// Affectation des taches pour les touches a utiliser
 		addKeyListener(new KeyListener(){
 		public void keyPressed(KeyEvent e){
 			int Touche = e.getKeyCode();
 
 			switch (Touche)
 			{
-				/** Commence par le d�but */
+				// Commence par le début 
 				case KeyEvent.VK_R:
 					JeuFini = false;
 					Jeu = new Jeu(x,y);
@@ -74,15 +74,15 @@ public class Tetris extends java.applet.Applet implements Runnable{
 						Enregistrement.CibleChanger(Jeu);
 					if(!Pause && !JeuFini) stop();
 					start(); repaint(); break;
-				/** Enregistrement du jeu dans l'etat actuel */
+				// Enregistrement du jeu dans l'etat actuel 
 				case KeyEvent.VK_K:
 					Enregistrement = new Memento(Jeu);
 					break;
-				/** Chargement du jeu dans son dernier etat */
+				// Chargement du jeu dans son dernier etat 
 				case KeyEvent.VK_Y:
 					if(Enregistrement != null) Enregistrement.Chargement();
 					repaint(); break;
-				/** Mettre en pause le jeu */
+				// Mettre en pause le jeu 
 				case KeyEvent.VK_P:
 					if(Pause && !JeuFini){ start(); Pause = false; }
 					else{ stop();  Pause = true;  }

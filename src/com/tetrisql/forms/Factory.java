@@ -3,13 +3,13 @@ package com.tetrisql.forms;
 public class Factory {
 	
 	//Détermine le type de piece (random)
-	public static Grille NouvellePiece(){
+	public static Grille nouvellePiece(){
 		int Genre = (int)(Math.random()*7.0);
-		return NouvellePiece(Genre);
+		return nouvellePiece(Genre);
 	}
 	
 	//Retourne une pièce
-	public static Grille NouvellePiece(int Genre){
+	public static Grille nouvellePiece(int Genre){
 		switch(Genre){
 			case 0: return new Piece1();
 			case 1: return new Piece2();
@@ -19,10 +19,10 @@ public class Factory {
 			case 5: return new Piece6();
 			case 6: return new Piece7();
 		}
-		return NouvellePiece();
+		return nouvellePiece();
 	}
 
-	public static Grille NouvellePiece(Grille ancien){
+	public static Grille nouvellePiece(Grille ancien){
 		return new Grille(ancien);
 	}
 }
