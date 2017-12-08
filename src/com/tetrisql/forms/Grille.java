@@ -42,7 +42,7 @@ public class Grille {
 	}
 	
 	//Methodes
-	public void Remplir(int sx,int sy,int w,int h,int valeur)
+	public void remplir(int sx,int sy,int w,int h,int valeur)
 	{
 		for(int i=0; i<w ;i++) {
 			for(int j=0; j<h ;j++) {
@@ -95,7 +95,7 @@ public class Grille {
 		return y;
 	}
 
-	public void Descendre(Grille modele,int sx,int sy)
+	public void descendre(Grille modele,int sx,int sy)
 	{
 		int mx,my;
 

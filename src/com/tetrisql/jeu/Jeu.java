@@ -7,15 +7,15 @@ import com.tetrisql.forms.Grille;
 
 public class Jeu implements Forme{
 	
-	Grille JeuZone;
-	Grille Piece;
+	public Grille JeuZone;
+	public Grille Piece;
 	int FScore;
 	int px,py;
 
 	public Jeu(int xs,int ys)
 	{
 		JeuZone = new Grille(xs,ys,1); //zone jeu et dimensions
-		Nettoyer();
+		nettoyer();
 		Piece = Factory.nouvellePiece(); //Pièce random
 		py = 0;
 		px = (xs - Piece.TailleX()) / 2;
@@ -23,10 +23,10 @@ public class Jeu implements Forme{
 	}
 	
 	//Nouvelle grille de jeu vierge
-	void Nettoyer()
+	void nettoyer()
 	{
 		//x,y,sx,sy,valeur
-		JeuZone.Remplir(0,0,JeuZone.TailleX(),JeuZone.TailleY(),0);
+		JeuZone.remplir(0,0,JeuZone.TailleX(),JeuZone.TailleY(),0);
 	}
 
 	public void Dessin(Graphics g, int x, int y)
@@ -44,12 +44,12 @@ public class Jeu implements Forme{
 	}
 
 	//Gère les différents enchaînements du jeu
-	public boolean Etape(boolean Toucher)
+	public boolean etape(boolean Toucher)
 	{
 	  if(JeuZone.SiVide(Piece,px,py+1))
 	  {
-		//Descendre la pièce
-		JeuZone.Descendre(Piece,px,py);
+		//descendre la pièce
+		JeuZone.descendre(Piece,px,py);
 
 		// Effacer les lignes remplies
 		int LignePoints = 50;
@@ -104,8 +104,8 @@ public class Jeu implements Forme{
 		return FScore;
 	}
 
-	//Déplacement vers la gauche (appelée par AllerGauche())
-	public void AllerGauche(int i)
+	//Déplacement vers la gauche (appelée par allerGauche())
+	public void allerGauche(int i)
 	{
 		if(JeuZone.SiVide(Piece,px-i,py))
 			return;
@@ -113,9 +113,9 @@ public class Jeu implements Forme{
 	}
 
 	//Déplace vers la gauche de 1
-	public void AllerGauche()
+	public void allerGauche()
 	{
-		AllerGauche(1);
+		allerGauche(1);
 	}
 
 	//Décale vers la droite de 1
@@ -139,7 +139,7 @@ public class Jeu implements Forme{
 			Piece=test;
 	}
 
-	public void TournerGauche()
+	public void tournerGauche()
 	{
 		Grille test = Factory.nouvellePiece(Piece);
 		test.TourneraGauche();
@@ -147,7 +147,7 @@ public class Jeu implements Forme{
 			Piece=test;
 	}
 
-	public void Descendre()
+	public void descendre()
 	{
 		while(!JeuZone.SiVide(Piece,px,py+1)){
 			py++;
@@ -174,7 +174,7 @@ class Memento{
 		py = Cible.py;
 	}
 	
-	public void CibleChanger(Jeu cible){
+	public void cibleChanger(Jeu cible){
 		Cible = cible;
 	}
 

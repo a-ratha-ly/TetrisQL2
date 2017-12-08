@@ -71,7 +71,7 @@ public class Tetris extends java.applet.Applet implements Runnable{
 					JeuFini = false;
 					Jeu = new Jeu(x,y);
 					if(Enregistrement != null)
-						Enregistrement.CibleChanger(Jeu);
+						Enregistrement.cibleChanger(Jeu);
 					if(!Pause && !JeuFini) stop();
 					start(); repaint(); break;
 				// Enregistrement du jeu dans l'etat actuel 
@@ -93,14 +93,14 @@ public class Tetris extends java.applet.Applet implements Runnable{
 			{
 				switch (Touche)
 				{
-					case KeyEvent.VK_LEFT : Jeu.AllerGauche(); repaint(); break;
+					case KeyEvent.VK_LEFT : Jeu.allerGauche(); repaint(); break;
 					case KeyEvent.VK_RIGHT: Jeu.AllerDroite(); repaint(); break;
 					case KeyEvent.VK_UP   : Jeu.TournerDroite(); repaint(); break;
-					case KeyEvent.VK_DOWN : JeuFini = Jeu.Etape(true); repaint(); break;
+					case KeyEvent.VK_DOWN : JeuFini = Jeu.etape(true); repaint(); break;
 					//REVOIR CES TOUCHES, CA NE FONCTIONNE PAS
-					case KeyEvent.VK_Q    : Jeu.TournerGauche(); repaint(); break;
+					case KeyEvent.VK_Q    : Jeu.tournerGauche(); repaint(); break;
 					case KeyEvent.VK_D    : Jeu.TournerDroite(); repaint(); break;
-					case KeyEvent.VK_SPACE: Jeu.Descendre();     repaint(); break;
+					case KeyEvent.VK_SPACE: Jeu.descendre();     repaint(); break;
 				}
 		  	}
 		}
@@ -137,7 +137,7 @@ public class Tetris extends java.applet.Applet implements Runnable{
 		Pause = false;
 		while(!JeuFini && !Pause)
 		{
-			JeuFini = Jeu.Etape(false);
+			JeuFini = Jeu.etape(false);
 			repaint();
 			try {Thread.sleep(500);} catch (InterruptedException e){ return; }
 		}
