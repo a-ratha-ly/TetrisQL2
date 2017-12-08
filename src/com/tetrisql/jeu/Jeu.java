@@ -131,7 +131,7 @@ public class Jeu implements Forme{
 		allerDroite(1);
 	}
 
-	public void TournerDroite()
+	public void tournerDroite()
 	{
 		Grille test = Factory.nouvellePiece(Piece);
 		test.TourneraDroite();

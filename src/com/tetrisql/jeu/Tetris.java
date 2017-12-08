@@ -52,10 +52,11 @@ public class Tetris extends java.applet.Applet implements Runnable{
 		Score = new Decorator(new Zone(80,16),"Score: ");
 		Etat = new Decorator(new Zone(95,16),"Etat: ");
 		Enregistrement = null;
-
-		xs = x*12+16;  // Zone de jeu
-		ys = y*12+4   // Zone de jeu
-		       +60;	// Score et Etat
+		
+		// Zone de jeu
+		xs = x*12+16;  
+		// Zone de jeu
+		ys = y*12+4+60;	// Score et Etat
 		resize(xs,ys);
 		requestFocus();
 
@@ -95,11 +96,11 @@ public class Tetris extends java.applet.Applet implements Runnable{
 				{
 					case KeyEvent.VK_LEFT : Jeu.allerGauche(); repaint(); break;
 					case KeyEvent.VK_RIGHT: Jeu.allerDroite(); repaint(); break;
-					case KeyEvent.VK_UP   : Jeu.TournerDroite(); repaint(); break;
+					case KeyEvent.VK_UP   : Jeu.tournerDroite(); repaint(); break;
 					case KeyEvent.VK_DOWN : JeuFini = Jeu.etape(true); repaint(); break;
 					//REVOIR CES TOUCHES, CA NE FONCTIONNE PAS
 					case KeyEvent.VK_Q    : Jeu.tournerGauche(); repaint(); break;
-					case KeyEvent.VK_D    : Jeu.TournerDroite(); repaint(); break;
+					case KeyEvent.VK_D    : Jeu.tournerDroite(); repaint(); break;
 					case KeyEvent.VK_SPACE: Jeu.descendre();     repaint(); break;
 				}
 		  	}
@@ -126,10 +127,6 @@ public class Tetris extends java.applet.Applet implements Runnable{
 			JeuFonctionner.interrupt();
 		JeuFonctionner = null;
 	}
-
-	public void destroy()
-	{
-	}
    
 	public void run()
 	{
@@ -148,12 +145,14 @@ public class Tetris extends java.applet.Applet implements Runnable{
 		Jeu.dessin(g,10,10);
 		Score.EcritureDeterminer((new Integer(Jeu.Score())).toString());
 		Score.dessin(g,5,ys-40);
+		
 		if(JeuFini)
 			Etat.EcritureDeterminer("Game Over");
 		else if(Pause)
 			Etat.EcritureDeterminer("Pause");
 		else
 			Etat.EcritureDeterminer("En cours");
+		
 		Etat.dessin(g,90,ys-40);
 		g.drawString("TETRIS",xs,20);
 		g.drawString("QL2",xs,35);
