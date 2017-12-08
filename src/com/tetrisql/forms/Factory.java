@@ -1,103 +1,93 @@
 package com.tetrisql.forms;
 
-import com.tetrisql.jeu.Grille;
-
-//La factory
 public class Factory {
 	
-	//Méthode random pour retourner une forme random
-	public static Grille creerRandomTetrimino() {
-		int type = (int)(Math.random()*7); //entre 0 et 6
-		return initialiserTetrimino(type);		
+	//Détermine le type de piece (random)
+	public static Grille NouvellePiece(){
+		int Genre = (int)(Math.random()*7.0);
+		return NouvellePiece(Genre);
 	}
 	
-	//Switch utilisé par la méthode random (choisir entre différentes formes)
-	public static Grille initialiserTetrimino(int type) {
-		switch(type) {
-			case 0:
-				return new TetriminoI();
-			case 1:
-				return new TetriminoO();
-			case 2:
-				return new TetriminoT();
-			case 3:
-				return new TetriminoL();
-			case 4:
-				return new TetriminoJ();
-			case 5:
-				return new TetriminoZ();
-			case 6:
-				return new TetriminoS();	
-			default: 
-				break;
+	//Retourne une pièce
+	public static Grille NouvellePiece(int Genre){
+		switch(Genre){
+			case 0: return new Piece1();
+			case 1: return new Piece2();
+			case 2: return new Piece3();
+			case 3: return new Piece4();
+			case 4: return new Piece5();
+			case 5: return new Piece6();
+			case 6: return new Piece7();
 		}
-		return creerRandomTetrimino();
+		return NouvellePiece();
 	}
-	
-	public static Grille nouvellePiece(Grille ancien) {
+
+	public static Grille NouvellePiece(Grille ancien){
 		return new Grille(ancien);
 	}
 }
 
-//Les différents types de tetrimino
-class TetriminoI extends Grille {
-	TetriminoI(){ //barre
-		super(4,1); //Grille(int x, int y)
-		grille[0][0] = 1;
-		grille[1][0] = 1;
-		grille[2][0] = 1;
-		grille[3][0] = 1;
+////////// TETRIMINOS ////////// 
+
+class Piece1 extends Grille{
+	Piece1(){ //I
+		super(4,1);
+ 		grille[0][0] = 1;
+ 		grille[0][1] = 1;
+ 		grille[0][2] = 1;
+ 		grille[0][3] = 1;
 	}
 }
 
-class TetriminoO extends Grille {
-	TetriminoO(){ //carré
-		super(2,2); 
-		grille[0][0] = 1;
-		grille[0][1] = 1;
-		grille[1][0] = 1;
-		grille[1][1] = 1;
+class Piece2 extends Grille{
+	Piece2(){ //carré
+		super(2,2);
+		grille[0][0]=1;
+		grille[1][0]=1;
+		grille[0][1]=1;
+		grille[1][1]=1;
 	}
 }
 
-class TetriminoT extends Grille {
-	TetriminoT(){ // T
+class Piece3 extends Grille{
+	Piece3(){ //T inversé
 		super(3,2);
+		grille[0][0] = 0;
 		grille[0][0] = 1;
 		grille[0][1] = 0;
 		grille[1][0] = 1;
 		grille[1][1] = 1;
 		grille[2][0] = 1;
-		grille[2][1] = 0;	
+		grille[2][1] = 0;
 	}
 }
 
-class TetriminoL extends Grille {
-	TetriminoL(){ // L 
+class Piece4 extends Grille{
+	Piece4(){ //L
 		super(3,2);
 		grille[0][0] = 1;
 		grille[0][1] = 1;
 		grille[1][0] = 1;
 		grille[1][1] = 0;
 		grille[2][0] = 1;
-		grille[2][1] = 0;	
+		grille[2][1] = 0;
 	}
 }
 
-class TetriminoJ extends Grille {
-	TetriminoJ(){ // L inversé
+class Piece5 extends Grille{
+	Piece5(){ //L inversé
 		super(3,2);
 		grille[0][0] = 1;
 		grille[0][1] = 0;
 		grille[1][0] = 1;
 		grille[1][1] = 0;
 		grille[2][0] = 1;
-		grille[2][1] = 1;	
+		grille[2][1] = 1;
 	}
 }
 
-class TetriminoZ extends Grille {
-	TetriminoZ(){ // biais 
+class Piece6 extends Grille{
+	Piece6(){ //biais
 		super(3,2);
 		grille[0][0] = 1;
 		grille[0][1] = 0;
@@ -108,19 +98,14 @@ class TetriminoZ extends Grille {
 	}
 }
 
-class TetriminoS extends Grille {
-	TetriminoS(){ // biais inversé
+class Piece7 extends Grille{
+	Piece7(){ //I
 		super(3,2);
 		grille[0][0] = 0;
 		grille[0][1] = 1;
 		grille[1][0] = 1;
 		grille[1][1] = 1;
 		grille[2][0] = 1;
-		grille[2][1] = 0;	
+		grille[2][1] = 0;
 	}
 }
-
-
-
-
-
