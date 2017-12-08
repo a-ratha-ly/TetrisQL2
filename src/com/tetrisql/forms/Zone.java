@@ -17,7 +17,7 @@ public class Zone implements Forme{
 		Hauteur = Haut;
 	}
 
-	public void Dessin(java.awt.Graphics g, int sx, int sy)
+	public void dessin(java.awt.Graphics g, int sx, int sy)
 	{
 		g.draw3DRect(sx-1,sy,Largeur,Hauteur,true);
 	}

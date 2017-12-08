@@ -20,10 +20,10 @@ public class Decorator implements Forme{
 	}
 
 	//Pour afficher le score et l'état du jeu (pause/en cours)
-	public void Dessin(Graphics g, int sx, int sy)
+	public void dessin(Graphics g, int sx, int sy)
 	{
 		//Permet de dessiner à l'intérieur
-		Contenu.Dessin(g,sx,sy); //grille et dimension
+		Contenu.dessin(g,sx,sy); //grille et dimension
 
 		String msj = FixeEcriture+VariableEcriture;
 		int x,y;

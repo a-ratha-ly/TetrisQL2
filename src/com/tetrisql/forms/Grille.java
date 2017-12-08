@@ -71,7 +71,7 @@ public class Grille {
 		y=tmp;
 	}
 
-	public void TourneraGauche()
+	public void tourneraGauche()
 	{
 		int nouvelleGrille[][] = new int[y][x];
 		int s=x-1;

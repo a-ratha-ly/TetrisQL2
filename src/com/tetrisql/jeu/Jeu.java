@@ -29,7 +29,7 @@ public class Jeu implements Forme{
 		JeuZone.remplir(0,0,JeuZone.TailleX(),JeuZone.TailleY(),0);
 	}
 
-	public void Dessin(Graphics g, int x, int y)
+	public void dessin(Graphics g, int x, int y)
 	{
 		g.drawRect(x,y,2+JeuZone.TailleX()*12, 2+JeuZone.TailleY()*12);
 		for(int j=0;j<JeuZone.TailleY();j++) {
@@ -119,16 +119,16 @@ public class Jeu implements Forme{
 	}
 
 	//Décale vers la droite de 1
-	public void AllerDroite(int i)
+	public void allerDroite(int i)
 	{
 		if(JeuZone.SiVide(Piece,px+i,py))
 			return;
 		px+=i;
 	}
 
-	public void AllerDroite()
+	public void allerDroite()
 	{
-		AllerDroite(1);
+		allerDroite(1);
 	}
 
 	public void TournerDroite()
@@ -142,7 +142,7 @@ public class Jeu implements Forme{
 	public void tournerGauche()
 	{
 		Grille test = Factory.nouvellePiece(Piece);
-		test.TourneraGauche();
+		test.tourneraGauche();
 		if(!JeuZone.SiVide(test,px,py))
 			Piece=test;
 	}

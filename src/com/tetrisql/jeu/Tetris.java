@@ -94,7 +94,7 @@ public class Tetris extends java.applet.Applet implements Runnable{
 				switch (Touche)
 				{
 					case KeyEvent.VK_LEFT : Jeu.allerGauche(); repaint(); break;
-					case KeyEvent.VK_RIGHT: Jeu.AllerDroite(); repaint(); break;
+					case KeyEvent.VK_RIGHT: Jeu.allerDroite(); repaint(); break;
 					case KeyEvent.VK_UP   : Jeu.TournerDroite(); repaint(); break;
 					case KeyEvent.VK_DOWN : JeuFini = Jeu.etape(true); repaint(); break;
 					//REVOIR CES TOUCHES, CA NE FONCTIONNE PAS
@@ -145,16 +145,16 @@ public class Tetris extends java.applet.Applet implements Runnable{
 
 	public void paint(Graphics g)
 	{
-		Jeu.Dessin(g,10,10);
+		Jeu.dessin(g,10,10);
 		Score.EcritureDeterminer((new Integer(Jeu.Score())).toString());
-		Score.Dessin(g,5,ys-40);
+		Score.dessin(g,5,ys-40);
 		if(JeuFini)
 			Etat.EcritureDeterminer("Game Over");
 		else if(Pause)
 			Etat.EcritureDeterminer("Pause");
 		else
 			Etat.EcritureDeterminer("En cours");
-		Etat.Dessin(g,90,ys-40);
+		Etat.dessin(g,90,ys-40);
 		g.drawString("TETRIS",xs,20);
 		g.drawString("QL2",xs,35);
 	}
